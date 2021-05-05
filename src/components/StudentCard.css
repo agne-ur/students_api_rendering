@@ -4,7 +4,7 @@
   grid-template-rows: min-content, 1fr 1fr;
   grid-gap: 10px;
   grid-template-areas:
-    "avatar name name name expandBtn"
+    "avatar name name name name"
     "avatar content content . ."
     ". content content . .";
   padding: 16px;
@@ -32,10 +32,17 @@
   font-weight: 500;
 }
 
-.text {
+.content {
   grid-area: content;
-  margin-left: 6px;
+  margin-left: 2px;
   font-family: "Raleway", sans-serif;
   font-weight: 100;
   font-size: small;
+  /* align-content: center;
+  text-align: left; */
+}
+
+.content div {
+  padding-left: 5px;
+  padding-top: 2px;
 }
