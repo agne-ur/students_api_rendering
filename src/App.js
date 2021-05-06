@@ -20,12 +20,25 @@ function App() {
     setFilterContent(newNameFilter);
   }
 
+  const addTag = (str, index) => {
+    const tagForStudent = [...studentData];
+    tagForStudent[index].tags.push(str);
+    setStudentData(tagForStudent);
+  }
+
   async function fetchUrl(url) {
     const response = await fetch(url);
     const json = await response.json();
     const {students} = json;
-    setStudentData(students);
-    setFilterContent(students);
+    let newStudentData = [];
+
+    students.map(student => {
+      let newStudent = student;
+      newStudent.tags = [];
+      newStudentData.push(newStudent);
+    })
+    setStudentData(newStudentData);
+    setFilterContent(newStudentData);
   }
 
   useEffect(() => {
@@ -60,7 +73,9 @@ function App() {
               email={student.email}
               company={student.company}
               skill={student.skill}
-              grades = {averageGrades}
+              grades={averageGrades}
+              tags={student.tags}
+              addTag={addTag}
             />
           );
         })}
